@@ -26,3 +26,9 @@ const removeTodo = (index) => {
 </main>
 
 </template>
+
+<style>
+  main{
+    background-color: #fdf6e3;
+  }
+</style>
