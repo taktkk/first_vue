@@ -26,14 +26,12 @@ const showContent = ref(false);
 
     const closeModal = () => {
       showContent.value = false;
-
-      const clickEvent = () => {
-            context.emit('from-child');
-          };
-          const stopEvent = (e) => {
-            e.stopPropagation();
-          }
-        }
+    }
+    
+    const stopEvent = (e) => {
+      e.stopPropagation();
+    }
+  
 // モーダル機能
 
 
@@ -48,27 +46,38 @@ const showContent = ref(false);
   <button @click="addTodo()">追加</button>
 
   <TodoList :todos="todos" @removeTodo="removeTodo"/>
-</main>
 
 
 
-{/* モーダル機能 */}
-<button v-on:click="openModal">Click</button>
 
-<div id="overlay" v-show="showContent">
-  <div id="content">
-    <p>これがモーダルウィンドウです。</p>
-    <button v-on:click="closeModal">Close</button>
+<!-- {/* モーダル機能 */} -->
+
+
+<button v-on:click="openModal">利用規約</button>
+
+<div id="overlay" v-show="showContent" @click="closeModal">
+  <div id="content" @click="stopEvent">
+    <h1>利用規約</h1>
+      <p>
+        この利用規約（以下，「本規約」といいます。）は，＿＿＿＿＿（以下，「当社」といいます。）がこのウェブサイト上で提供するサービス（以下，「本サービス」といいます。）の利用条件を定めるものです。登録ユーザーの皆さま（以下，「ユーザー」といいます。）には，本規約に従って，本サービスをご利用いただきます。
+      </p>
+      <h2>第1条（適用）</h2>
+      <ol>
+        <li>
+          本規約は，ユーザーと当社との間の本サービスの利用に関わる一切の関係に適用されるものとします。
+        </li>
+        <li>
+          当社は本サービスに関し，本規約のほか，ご利用にあたってのルール等，各種の定め（以下，「個別規定」といいます。）をすることがあります。これら個別規定はその名称のいかんに関わらず，本規約の一部を構成するものとします。
+        </li>
+        <li>
+          本規約の規定が前条の個別規定の規定と矛盾する場合には，個別規定において特段の定めなき限り，個別規定の規定が優先されるものとします。
+        </li>
+      </ol>
+    <button v-on:click="closeModal">閉じる</button>
   </div>
 </div>
-<div id="overlay" v-on:click="clickEvent">
-    <div id="content" v-on:click="stopEvent">
-      <p><slot></slot></p>
-      <button v-on:click="clickEvent">close</button>
-    </div>
-</div>
-{/* モーダル機能 */}
-
+<!-- {/* モーダル機能 */} -->
+</main>
 
 </template>
 
