@@ -42,8 +42,10 @@ const showContent = ref(false);
 <template>
   <AppHeader color1="green" >ToDoリスト</AppHeader><br>
 <main>
-  <input type="text" size="30" v-model="newTodo">
-  <button @click="addTodo()">追加</button>
+  <!-- <input type="text" size="30" v-model="newTodo"> -->
+  <el-input type="text" v-model="newTodo" placeholder="Please input" />
+  <!-- <button @click="addTodo()">追加</button> -->
+  <el-button id="button" @click="addTodo()" type="primary">追加</el-button>
 
   <TodoList :todos="todos" @removeTodo="removeTodo"/>
 
@@ -53,7 +55,8 @@ const showContent = ref(false);
 <!-- {/* モーダル機能 */} -->
 
 
-<button v-on:click="openModal">利用規約</button>
+<!-- <button v-on:click="openModal">利用規約</button> -->
+<el-button id="button" v-on:click="openModal" type="info">利用規約</el-button>
 
 <div id="overlay" v-show="showContent" @click="closeModal">
   <div id="content" @click="stopEvent">
@@ -83,7 +86,7 @@ const showContent = ref(false);
 
 <style>
   main{
-    background-color: #fdf6e3;
+    background-color: #e1f3d8;
   }
 
   /* モーダル機能 */
@@ -112,5 +115,9 @@ const showContent = ref(false);
       background: #fff;
     }
   /* モーダル機能 */
+
+  #button{
+    margin-top: 20px;
+  }
 
 </style>

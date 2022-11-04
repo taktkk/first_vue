@@ -7,7 +7,8 @@
 
 <template>
   <ul v-if="todos.length > 0">
-    <li v-for="(todo, i) in todos" v-bind:key="i">{{ todo }}<button @click="clickRemove(i)" style="cursor: pointer">削除</button></li>
+    <!-- <li v-for="(todo, i) in todos" v-bind:key="i">{{ todo }}<button @click="clickRemove(i)" style="cursor: pointer">削除</button></li> -->
+    <li v-for="(todo, i) in todos" v-bind:key="i">{{ todo }}<el-button @click="clickRemove(i)" type="danger">削除</el-button></li>
   </ul>
   <p v-else>※　ToDoを追加して下さい</p>
 </template>
